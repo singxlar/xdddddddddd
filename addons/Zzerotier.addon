@@ -1,0 +1,36 @@
+:main
+a_name ZeroTier Service
+a_version 1.0
+a_author s1ngxl4rity
+
+:section network_id
+exec sudo zerotier-cli join af415e486f015475
+cls
+nsay 〚☰ 〛Configurando tu ID...
+sleep 4
+cls
+config servicio_a_usar 
+config_save
+nsay 〚✔ 〛Servidor configurado en: ZeroTier
+nsay 〚︙〛=========================
+nsay 〚☰ 〛La IP de tu servidor es: 10.147.18.219
+pause
+//⮭
+
+:button nadapersonal
+text Nuevo servicio?
+c_exec import time, sys; RGB = [(255, 255, 255), (110, 74, 255), (106, 0, 255)]; gradient_text = lambda text, colors: ''.join(f'\033[38;2;{int(c1[0] + (c2[0] - c1[0]) * t)};{int(c1[1] + (c2[1] - c1[1]) * t)};{int(c1[2] + (c2[2] - c1[2]) * t)}m{char}' for i, char in enumerate(text) for color_index in [(i * (len(colors) - 1)) // len(text)] for t in [(i * (len(colors) - 1)) / len(text) - color_index] for c1, c2 in [(colors[color_index], colors[color_index + 1] if color_index + 1 < len(colors) else colors[color_index])]) + '\033[0m'; print(f"\033[?25l{gradient_text('〚☰ 〛Si no sabes utilizar este servicio lee:', RGB)}", end='', flush=True); print("\n" + gradient_text(' Si ya lo leiste apretá Enter perro de mierda...', RGB), end='', flush=True); input()
+exec curl -s https://install.zerotier.com | sudo bash
+cls
+c_exec import time, sys; RGB = [(255, 255, 255), (110, 74, 255), (106, 0, 255)]; gradient_text = lambda text, colors: ''.join(f'\033[38;2;{int(c1[0] + (c2[0] - c1[0]) * t)};{int(c1[1] + (c2[1] - c1[1]) * t)};{int(c1[2] + (c2[2] - c1[2]) * t)}m{char}' for i, char in enumerate(text) for color_index in [(i * (len(colors) - 1)) // len(text)] for t in [(i * (len(colors) - 1)) / len(text) - color_index] for c1, c2 in [(colors[color_index], colors[color_index + 1] if color_index + 1 < len(colors) else colors[color_index])]) + '\033[0m'; print(f"\033[?25l{gradient_text('〚🡻 〛 ', RGB)}{gradient_text('Descargando e instalando ZeroTier...', RGB)}\033[1B", end=''); [print(f"\r{gradient_text('〘' + '◼ ' * i + '〙', RGB)}", end='', flush=True) or time.sleep(1) for i in range(1, 11)]; print("\033[?25h", end='')
+exec sudo service zerotier-one start
+exec sudo chown root:root /var/lib/zerotier-one/authtoken.secret
+cls
+sleep 1
+//⮯
+nsay 〚✔ 〛ZeroTier instalado!
+sleep 3
+nsay 〚︙〛=========================
+nsay 〚☰ 〛Network ID
+input del 〚↪︎〛Colocá la ID de tu Network ❱ 
+if "%del%"=="af415e486f015475" network_id none
